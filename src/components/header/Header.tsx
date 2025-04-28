@@ -1,56 +1,57 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import twitter from "../../assets/icon/twitter.svg";
 
-// Стили для Header
 const HeaderWrapper = styled.header`
 	position: sticky;
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: #333;
-	padding: 20px;
+	background-color: #f5f5f5;
+	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const Nav = styled.nav`
 	display: flex;
 	gap: 20px;
-
-	@media (max-width: 768px) {
-		flex-direction: column;
-		gap: 10px;
-	}
 `;
 
 const NavLinkStyled = styled(NavLink)`
-	color: #fff;
+	color: grey;
 	text-decoration: none;
 	font-size: 16px;
 	transition: color 0.3s ease;
 
 	&.active {
-		color: #f39c12; /* Активная ссылка */
+		color: black; /* Активная ссылка */
 	}
 
 	&:hover {
-		color: #f39c12; /* Hover эффект */
+		color: black; /* Hover эффект */
 	}
 `;
 
-const Logo = styled.div`
-	font-size: 24px;
-	font-weight: bold;
-	color: #fff;
+const Icon = styled.div`
+
+	img {
+		width: 32px;
+		height: 32px;
+	}
 `;
 
 const Header: React.FC = () => {
 	return (
 		<HeaderWrapper>
-			<Logo>MyLogo</Logo>
+			<Icon>
+				<img
+					src={twitter}
+					alt=''
+				/>
+			</Icon>
 			<Nav>
 				<NavLinkStyled
 					to='/'
@@ -58,7 +59,6 @@ const Header: React.FC = () => {
 					Home
 				</NavLinkStyled>
 				<NavLinkStyled to='/contacts-us'>Contact Us</NavLinkStyled>
-				<NavLinkStyled to='/data'>Data</NavLinkStyled>
 			</Nav>
 		</HeaderWrapper>
 	);
