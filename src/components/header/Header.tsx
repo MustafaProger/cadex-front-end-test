@@ -70,12 +70,8 @@ const Header: React.FC = () => {
 					/>
 				</Icon>
 				<Nav>
-					<NavLinkStyled
-						to='/'
-						end>
-						Home
-					</NavLinkStyled>
-					<NavLinkStyled to='/contacts-us'>Contact Us</NavLinkStyled>
+					<NavLinkStyled to='/'>Home</NavLinkStyled>
+					<NavLinkStyled to='/contact-us' end>Contact Us</NavLinkStyled>
 				</Nav>
 			</HeaderWrapper>
 		</>

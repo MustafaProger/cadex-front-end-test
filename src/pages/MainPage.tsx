@@ -220,14 +220,14 @@ const MainPage: React.FC = () => {
 							</CardText>
 						</Card>
 					</CardsGrid>
-					<ContactButton to='/contacts-us'>Contact us</ContactButton>
+					<ContactButton to='/contact-us'>Contact us</ContactButton>
 				</MiddleContent>
 			</MiddleSection>
 
 			<BottomSection bgColor='#f4f4f4'>
 				<BottomContent>
 					<BottomTitle>Ready to see what's happening?</BottomTitle>
-					<ContactButton to='/contacts-us'>Contact us</ContactButton>
+					<ContactButton to='/contact-us'>Contact us</ContactButton>
 				</BottomContent>
 			</BottomSection>
 		</>
