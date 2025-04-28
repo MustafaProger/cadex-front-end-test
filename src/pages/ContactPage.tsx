@@ -199,12 +199,12 @@ const ContactPage: React.FC = () => {
 	return (
 		<Section>
 			<Content>
-				<Title>Contact Twitter Team</Title>
-				<Description>
+				<Title data-aos='fade-down'>Contact Twitter Team</Title>
+				<Description data-aos='fade-down' data-aos-duration="400">
 					Have a question or feedback? Fill out the form below and our team will
 					get back to you soon.
 				</Description>
-				<form>
+				<form data-aos='fade-down' data-aos-duration="500">
 					<FloatingField
 						label='Name'
 						id='name'

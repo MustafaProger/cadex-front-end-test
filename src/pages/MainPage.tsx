@@ -151,14 +151,14 @@ const MainPage: React.FC = () => {
 				<TopContent>
 					<LeftBlock>
 						<Title data-aos='fade-down'>Join the conversation on Twitter</Title>
-						<Description>
+						<Description data-aos='fade-down'>
 							Stay connected to what matters. Discover trending topics, break
 							the news, and engage with the world in real time. Share your
 							thoughts in 280 characters, follow your interests, and be a part
 							of the global conversation.
 						</Description>
 					</LeftBlock>
-					<RightBlock>
+					<RightBlock data-aos='fade-down'>
 						<Iframe
 							src='https://www.youtube.com/embed/dQw4w9WgXcQ'
 							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -169,11 +169,11 @@ const MainPage: React.FC = () => {
 				</TopContent>
 			</TopSection>
 
-			<MiddleSection>
+			<MiddleSection >
 				<MiddleContent>
-					<MiddleTitle>Why millions use Twitter every day</MiddleTitle>
+					<MiddleTitle data-aos='fade-down'>Why millions use Twitter every day</MiddleTitle>
 					<CardsGrid>
-						<Card>
+						<Card data-aos='fade-down' data-aos-duration="400">
 							<CardTitle>Real-Time Updates</CardTitle>
 							<CardText>
 								Get the latest news, sports, and trends as they happen. Twitter
@@ -181,7 +181,7 @@ const MainPage: React.FC = () => {
 								globe.
 							</CardText>
 						</Card>
-						<Card>
+						<Card data-aos='fade-down' data-aos-duration="600">
 							<CardTitle>Connect with Communities</CardTitle>
 							<CardText>
 								Follow your favorite creators, join conversations, and build
@@ -189,7 +189,7 @@ const MainPage: React.FC = () => {
 								together.
 							</CardText>
 						</Card>
-						<Card>
+						<Card data-aos='fade-down' data-aos-duration="800">
 							<CardTitle>Express Yourself</CardTitle>
 							<CardText>
 								Share your thoughts, ideas, and creativity. From memes to
@@ -197,21 +197,21 @@ const MainPage: React.FC = () => {
 								change.
 							</CardText>
 						</Card>
-						<Card>
+						<Card data-aos='fade-down' data-aos-duration="400">
 							<CardTitle>Discover Trends</CardTitle>
 							<CardText>
 								Explore what's trending right now. From breaking news to viral
 								moments, see what the world is talking about.
 							</CardText>
 						</Card>
-						<Card>
+						<Card data-aos='fade-down' data-aos-duration="600">
 							<CardTitle>Follow Your Interests</CardTitle>
 							<CardText>
 								Whether it’s technology, sports, entertainment, or politics,
 								tailor your feed to what you care about most.
 							</CardText>
 						</Card>
-						<Card>
+						<Card data-aos='fade-down' data-aos-duration="800">
 							<CardTitle>Join the Conversation</CardTitle>
 							<CardText>
 								Reply, retweet, and like. Engage with tweets and be part of the
@@ -219,14 +219,14 @@ const MainPage: React.FC = () => {
 							</CardText>
 						</Card>
 					</CardsGrid>
-					<ContactButton to='/contact-us'>Contact us</ContactButton>
+					<ContactButton to='/contact-us' data-aos='fade-down' >Contact us</ContactButton>
 				</MiddleContent>
 			</MiddleSection>
 
-			<BottomSection bgColor='#f4f4f4'>
+			<BottomSection bgColor='#f4f4f4' >
 				<BottomContent>
-					<BottomTitle>Ready to see what's happening?</BottomTitle>
-					<ContactButton to='/contact-us'>Contact us</ContactButton>
+					<BottomTitle data-aos='fade-down' >Ready to see what's happening?</BottomTitle>
+					<ContactButton to='/contact-us' data-aos='fade-down' >Contact us</ContactButton>
 				</BottomContent>
 			</BottomSection>
 		</>
