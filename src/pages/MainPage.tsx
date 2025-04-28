@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -151,7 +150,7 @@ const MainPage: React.FC = () => {
 			<TopSection bgColor='#f7f7f7'>
 				<TopContent>
 					<LeftBlock>
-						<Title>Join the conversation on Twitter</Title>
+						<Title data-aos='fade-down'>Join the conversation on Twitter</Title>
 						<Description>
 							Stay connected to what matters. Discover trending topics, break
 							the news, and engage with the world in real time. Share your

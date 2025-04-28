@@ -9,7 +9,7 @@ const FieldWrapper = styled.div`
 
 const FloatingLabel = styled.label<{ active: boolean; color?: string }>`
 	position: absolute;
-	left: 0;
+	left: 16px;
 	top: 16px;
 	font-size: 1.1rem;
 	color: ${({ active, color }) => (active ? color || "black" : "grey")};
@@ -19,7 +19,7 @@ const FloatingLabel = styled.label<{ active: boolean; color?: string }>`
 		active &&
 		css`
 			top: -10px;
-			left: 0;
+			left: 12px;
 			font-size: 0.95rem;
 			color: ${color || "black"};
 			background: #fff;
@@ -30,15 +30,15 @@ const FloatingLabel = styled.label<{ active: boolean; color?: string }>`
 
 const StyledInput = styled.input<{ active: boolean; color?: string }>`
 	width: 100%;
-	border: none;
-	border-bottom: 2px solid
-		${({ active, color }) => (active ? color || "black" : "grey")};
+	border: 2px solid;
+	${({ active, color }) => (active ? color || "black" : "grey")};
 	background: transparent;
 	font-size: 16px;
-	padding: 16px 0 8px 0;
+	padding: 16px;
 	color: #111;
 	outline: none;
 	transition: border-color 0.2s;
+	border-radius: 8px;
 
 	&::placeholder {
 		color: transparent;
@@ -48,15 +48,16 @@ const StyledInput = styled.input<{ active: boolean; color?: string }>`
 const StyledTextarea = styled.textarea<{ active: boolean; color?: string }>`
 	width: 100%;
 	border: none;
-	border-bottom: 2px solid
+	border: 2px solid
 		${({ active, color }) => (active ? color || "black" : "grey")};
 	background: transparent;
 	font-size: 16px;
-	padding: 16px 0 8px 0;
+	padding: 16px;
 	color: #111;
 	outline: none;
 	resize: vertical;
 	transition: border-color 0.2s;
+	border-radius: 8px;
 
 	&::placeholder {
 		color: transparent;
@@ -203,7 +204,7 @@ const ContactPage: React.FC = () => {
 					Have a question or feedback? Fill out the form below and our team will
 					get back to you soon.
 				</Description>
-				<form >
+				<form>
 					<FloatingField
 						label='Name'
 						id='name'
