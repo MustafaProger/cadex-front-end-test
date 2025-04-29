@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ContactForm from "../components/form/Form";
+import { handleSubmit } from "../services/formService";
 
 const Section = styled.section`
 	width: 100%;
@@ -49,27 +50,6 @@ const ContactPage: React.FC = () => {
 		setFields({ ...fields, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault();
-
-		try {
-			const response = await fetch("http://localhost:3001/api/contact", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					name: fields.name,
-					email: fields.email,
-					message: fields.message,
-				}),
-			});
-
-			const data = await response.json();
-			console.log(data.message);
-		} catch (error) {
-			console.error("Ошибка при отправке:", error);
-		}
-	};
-
 	return (
 		<Section>
 			<Content>
@@ -83,7 +63,7 @@ const ContactPage: React.FC = () => {
 				<ContactForm
 					values={fields}
 					onChange={handleChange}
-					onSubmit={handleSubmit}
+					onSubmit={(e) => handleSubmit(e, fields)}
 				/>
 			</Content>
 		</Section>
