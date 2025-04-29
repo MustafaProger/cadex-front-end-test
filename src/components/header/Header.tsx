@@ -9,22 +9,23 @@ const HeaderBackground = styled.div`
 	left: 0;
 	width: 100%;
 	height: 60px;
-	background-color: #f5f5f5;
+	background-color: white;
 	z-index: 999;
+	/* border-bottom: 1px solid rgba(0,0,0,0.1); */
 `;
 
 const HeaderWrapper = styled.header`
-	position: fixed;
+	position: sticky;
 	top: 0;
-	left: 50%;
-	width: 1200px;
-	max-width: 100%;
-	transform: translateX(-50%);
+	left: 0;
+	max-width: 1200px;
+	width: 100%;
 	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	z-index: 1000;
+	margin: 0 auto;
 `;
 
 const Nav = styled.nav`
