@@ -1,5 +1,14 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { Typography, Box, Card, CardContent, Button } from "@mui/material";
+import {
+	Clock,
+	Users,
+	Pen,
+	TrendingUp,
+	Heart,
+	MessageCircle,
+} from "lucide-react";
 
 const SectionWrapper = styled.section<{ bgcolor?: string }>`
 	width: 100%;
@@ -17,31 +26,9 @@ const ContentWrapper = styled.div`
 	}
 `;
 
-const TopSection = styled(SectionWrapper)``;
-
-const TopContent = styled(ContentWrapper)`
-	display: flex;
-	justify-content: space-between;
-	gap: 40px;
-	flex-wrap: wrap;
-	padding-top: 40px;
-`;
-
 const LeftBlock = styled.div`
 	flex: 1;
 	max-width: 600px;
-`;
-
-const Title = styled.h1`
-	font-weight: 900;
-	font-size: 2.8rem;
-	margin-bottom: 20px;
-`;
-
-const Description = styled.p`
-	font-size: 1.1rem;
-	line-height: 1.5;
-	color: #333;
 `;
 
 const RightBlock = styled.div`
@@ -67,21 +54,6 @@ const Iframe = styled.iframe`
 	border: none;
 `;
 
-const MiddleSection = styled(SectionWrapper)`
-	background-color: #fff;
-	padding-top: 60px;
-	padding-bottom: 40px;
-	text-align: center;
-`;
-
-const MiddleContent = styled(ContentWrapper)``;
-
-const MiddleTitle = styled.h2`
-	font-weight: 900;
-	font-size: 2.2rem;
-	margin-bottom: 40px;
-`;
-
 const CardsGrid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -95,78 +67,130 @@ const CardsGrid = styled.div`
 	}
 `;
 
-const Card = styled.div`
-	border: 0.5px solid rgba(0,0,0,0.2);
-	box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-	padding: 20px;
-	border-radius: 10px;
-	text-align: left;
-	transition: all 0.3s;
-	&:hover {
-		transform: translateY(-10px) !important;
-		box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-		transition: all 0.3s;
-	}
-`;
+const buttonSx = {
+	background: "black",
+	border: "1px solid black",
+	borderRadius: "8px",
+	transition: "all 0.3s ease !important",
+	"&:hover": {
+		backgroundColor: "transparent",
+		color: "black",
+	},
+};
 
-const CardTitle = styled.h3`
-	font-weight: 700;
-	font-size: 1.1rem;
-	margin-bottom: 10px;
-`;
+const ContactButton = ({ to }: { to: string }) => (
+	<Button
+		component={NavLink}
+		to={to}
+		variant='contained'
+		color='primary'
+		size='large'
+		sx={buttonSx}
+		data-aos='fade-down'>
+		Contact us
+	</Button>
+);
 
-const CardText = styled.p`
-	font-size: 1rem;
-	color: #555;
-	line-height: 1.4;
-`;
+const cardData = [
+	{
+		title: "Real-Time Updates",
+		text: "Get the latest news, sports, and trends as they happen. Twitter keeps you in the loop with instant updates from around the globe.",
+		Icon: Clock,
+	},
+	{
+		title: "Connect with Communities",
+		text: "Follow your favorite creators, join conversations, and build your own network. Twitter brings people with shared interests together.",
+		Icon: Users,
+	},
+	{
+		title: "Express Yourself",
+		text: "Share your thoughts, ideas, and creativity. From memes to movements, your voice can spark conversations and inspire change.",
+		Icon: Pen,
+	},
+	{
+		title: "Discover Trends",
+		text: "Explore what's trending right now. From breaking news to viral moments, see what the world is talking about.",
+		Icon: TrendingUp,
+	},
+	{
+		title: "Follow Your Interests",
+		text: "Whether it’s technology, sports, entertainment, or politics, tailor your feed to what you care about most.",
+		Icon: Heart,
+	},
+	{
+		title: "Join the Conversation",
+		text: "Reply, retweet, and like. Engage with tweets and be part of the global dialogue happening every second.",
+		Icon: MessageCircle,
+	},
+];
 
-const ContactButton = styled(NavLink)`
-	background-color: #111;
-	color: white;
-	border: 1px solid #111;
-	padding: 10px 24px;
-	border-radius: 8px;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: all 0.3s ease !important;
-	margin: 0 auto;
-	text-decoration: none;
+type InfoCardProps = {
+	title: string;
+	text: string;
+	Icon: React.ElementType;
+	delay?: number;
+};
 
-	&:hover {
-		background-color: transparent;
-		color: #111;
-	}
-`;
-
-const BottomSection = styled(SectionWrapper)`
-	background-color: #f4f4f4;
-	padding-top: 60px;
-	padding-bottom: 60px;
-	text-align: center;
-`;
-
-const BottomContent = styled(ContentWrapper)``;
-
-const BottomTitle = styled.h2`
-	font-weight: 900;
-	font-size: 2rem;
-	margin-bottom: 24px;
-`;
+const InfoCard: React.FC<InfoCardProps> = ({
+	title,
+	text,
+	Icon,
+	delay = 0,
+}) => (
+	<Card
+		data-aos='fade-down'
+		data-aos-duration={400 + delay}
+		sx={{
+			transition: "all 0.3s ease",
+			cursor: "pointer",
+			"&:hover": {
+				transform: "translateY(-5px) !important",
+				boxShadow: 3,
+			},
+		}}>
+		<CardContent>
+			<Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
+				<Icon size={24} />
+				<Typography variant='h6'>{title}</Typography>
+			</Box>
+			<Typography
+				variant='body2'
+				sx={{ color: "text.secondary", fontSize: 16, textAlign: "start" }}>
+				{text}
+			</Typography>
+		</CardContent>
+	</Card>
+);
 
 const MainPage: React.FC = () => {
 	return (
 		<>
-			<TopSection bgcolor='#f7f7f7'>
-				<TopContent>
+			<SectionWrapper bgcolor='#f7f7f7'>
+				<ContentWrapper
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						gap: 40,
+						flexWrap: "wrap",
+						paddingTop: 40,
+					}}>
 					<LeftBlock>
-						<Title data-aos='fade-down'>Join the conversation on Twitter</Title>
-						<Description data-aos='fade-down'>
+						<Typography
+							variant='h3'
+							fontWeight={900}
+							gutterBottom
+							data-aos='fade-down'>
+							Join the conversation on Twitter
+						</Typography>
+						<Typography
+							variant='body1'
+							color='text.secondary'
+							data-aos='fade-down'>
 							Stay connected to what matters. Discover trending topics, break
 							the news, and engage with the world in real time. Share your
 							thoughts in 280 characters, follow your interests, and be a part
 							of the global conversation.
-						</Description>
+						</Typography>
 					</LeftBlock>
 					<RightBlock data-aos='fade-down'>
 						<Iframe
@@ -176,93 +200,65 @@ const MainPage: React.FC = () => {
 							title='What is Twitter?'
 						/>
 					</RightBlock>
-				</TopContent>
-			</TopSection>
+				</ContentWrapper>
+			</SectionWrapper>
 
-			<MiddleSection>
-				<MiddleContent>
-					<MiddleTitle data-aos='fade-down'>
-						Why millions use Twitter every day
-					</MiddleTitle>
+			<SectionWrapper bgcolor='#fff'>
+				<ContentWrapper>
+					<Box textAlign='center'>
+						<Typography
+							sx={{ mb: 3 }}
+							variant='h4'
+							fontWeight={900}
+							gutterBottom
+							data-aos='fade-down'>
+							Why millions use Twitter every day
+						</Typography>
+					</Box>
 					<CardsGrid>
-						<Card
-							data-aos='fade-down'
-							data-aos-duration='400'>
-							<CardTitle>Real-Time Updates</CardTitle>
-							<CardText>
-								Get the latest news, sports, and trends as they happen. Twitter
-								keeps you in the loop with instant updates from around the
-								globe.
-							</CardText>
-						</Card>
-						<Card
-							data-aos='fade-down'
-							data-aos-duration='600'>
-							<CardTitle>Connect with Communities</CardTitle>
-							<CardText>
-								Follow your favorite creators, join conversations, and build
-								your own network. Twitter brings people with shared interests
-								together.
-							</CardText>
-						</Card>
-						<Card
-							data-aos='fade-down'
-							data-aos-duration='800'>
-							<CardTitle>Express Yourself</CardTitle>
-							<CardText>
-								Share your thoughts, ideas, and creativity. From memes to
-								movements, your voice can spark conversations and inspire
-								change.
-							</CardText>
-						</Card>
-						<Card
-							data-aos='fade-down'
-							data-aos-duration='400'>
-							<CardTitle>Discover Trends</CardTitle>
-							<CardText>
-								Explore what's trending right now. From breaking news to viral
-								moments, see what the world is talking about.
-							</CardText>
-						</Card>
-						<Card
-							data-aos='fade-down'
-							data-aos-duration='600'>
-							<CardTitle>Follow Your Interests</CardTitle>
-							<CardText>
-								Whether it’s technology, sports, entertainment, or politics,
-								tailor your feed to what you care about most.
-							</CardText>
-						</Card>
-						<Card
-							data-aos='fade-down'
-							data-aos-duration='800'>
-							<CardTitle>Join the Conversation</CardTitle>
-							<CardText>
-								Reply, retweet, and like. Engage with tweets and be part of the
-								global dialogue happening every second.
-							</CardText>
-						</Card>
+						{cardData.map((card, index) => (
+							<InfoCard
+								key={card.title}
+								title={card.title}
+								text={card.text}
+								Icon={card.Icon}
+								delay={index * 100}
+							/>
+						))}
 					</CardsGrid>
-					<ContactButton
-						to='/contact-us'
-						data-aos='fade-down'>
-						Contact us
-					</ContactButton>
-				</MiddleContent>
-			</MiddleSection>
+					<Box
+						display='flex'
+						justifyContent='center'>
+						<ContactButton to='/contact-us' />
+					</Box>
+				</ContentWrapper>
+			</SectionWrapper>
 
-			<BottomSection bgcolor='#f4f4f4'>
-				<BottomContent>
-					<BottomTitle data-aos='fade-down'>
-						Ready to see what's happening?
-					</BottomTitle>
-					<ContactButton
-						to='/contact-us'
-						data-aos='fade-down'>
-						Contact us
-					</ContactButton>
-				</BottomContent>
-			</BottomSection>
+			<SectionWrapper bgcolor='#f4f4f4'>
+				<ContentWrapper>
+					<Box
+						display='flex'
+						justifyContent='center'
+						alignItems='center'
+						textAlign='center'
+						gap={2}
+						sx={{
+							flexDirection: "row",
+							"@media (max-width:550px)": {
+								flexDirection: "column",
+							},
+						}}>
+						<Typography
+							variant='h5'
+							fontWeight={900}
+							gutterBottom
+							data-aos='fade-right'>
+							Ready to see what's happening?
+						</Typography>
+						<ContactButton to='/contact-us' />
+					</Box>
+				</ContentWrapper>
+			</SectionWrapper>
 		</>
 	);
 };

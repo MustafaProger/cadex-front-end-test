@@ -1,48 +1,20 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import {
+	Button,
+	CircularProgress,
+	Box,
+	Typography,
+	Paper,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import ContactForm from "../components/form/Form";
 import { handleSubmit } from "../services/formService";
-import { useNavigate } from "react-router-dom";
-
-const Section = styled.section`
-	width: 100%;
-	background: #f7f7f7;
-	padding: 60px 0;
-`;
-
-const Content = styled.div`
-	max-width: 600px;
-	margin: 0 auto;
-	background: #fff;
-	border-radius: 12px;
-	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-	padding: 40px 32px;
-	text-align: center;
-
-	@media (max-width: 600px) {
-		margin: 0 20px;
-		padding: 40px 20px;
-	}
-`;
-
-const Title = styled.h2`
-	font-size: 2.2rem;
-	font-weight: 900;
-	margin-bottom: 18px;
-	color: #111;
-`;
-
-const Description = styled.p`
-	color: #444;
-	font-size: 1.1rem;
-	margin-bottom: 32px;
-`;
 
 const ContactPage: React.FC = () => {
 	const [fields, setFields] = useState({
-		name: "ыфвафыв",
-		email: "sadfads@sdfdsf",
-		message: "asdfasdfasdfasdfsda",
+		name: "",
+		email: "",
+		message: "",
 	});
 
 	const [loading, setLoading] = useState(false);
@@ -64,6 +36,7 @@ const ContactPage: React.FC = () => {
 			setResponseMessage(message);
 			setFormSent(true);
 			sessionStorage.setItem("formResponse", JSON.stringify({ message }));
+			setFields({ name: "", email: "", message: "" });
 			navigate("/thank-you");
 		} catch (err) {
 			alert("Ошибка при отправке");
@@ -73,28 +46,58 @@ const ContactPage: React.FC = () => {
 	};
 
 	return (
-		<Section>
-			<Content>
-				<Title data-aos='fade-down'>Contact Twitter Team</Title>
-				<Description
+		<Box sx={{ width: "100%", background: "#f7f7f7", padding: "60px 0" }}>
+			<Paper
+				sx={{
+					maxWidth: 600,
+					margin: "0 auto",
+					background: "#fff",
+					borderRadius: 2,
+					boxShadow: 3,
+					padding: "40px 32px",
+					textAlign: "center",
+					"@media (max-width: 600px)": {
+						padding: "40px 20px",
+					},
+				}}>
+				<Typography
+					variant='h4'
+					component='h2'
+					fontWeight={900}
+					gutterBottom
+					data-aos='fade-down'>
+					Contact Twitter Team
+				</Typography>
+				<Typography
+					variant='body1'
+					color='text.secondary'
+					paragraph
 					data-aos='fade-down'
 					data-aos-duration='400'>
 					Have a question or feedback? Fill out the form below and our team will
 					get back to you soon.
-				</Description>
+				</Typography>
 				{loading ? (
-					<p>Отправка данных...</p>
+					<CircularProgress sx={{ display: "block", margin: "20px auto" }} />
 				) : formSent ? (
 					<>
-						<p>{responseMessage}</p>
-						<button
+						<Typography
+							variant='body1'
+							color='success.main'
+							paragraph>
+							{responseMessage}
+						</Typography>
+						<Button
+							variant='contained'
+							color='primary'
 							onClick={() => {
 								setFormSent(false);
 								setFields({ name: "", email: "", message: "" });
 								setResponseMessage("");
-							}}>
-							Заполнить снова
-						</button>
+							}}
+							sx={{ marginTop: 2 }}>
+							Fill Form Again
+						</Button>
 					</>
 				) : (
 					<ContactForm
@@ -103,8 +106,8 @@ const ContactPage: React.FC = () => {
 						onSubmit={onSubmit}
 					/>
 				)}
-			</Content>
-		</Section>
+			</Paper>
+		</Box>
 	);
 };
 

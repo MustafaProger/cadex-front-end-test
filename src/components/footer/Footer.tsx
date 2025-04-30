@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ShieldCheck, FileText, LifeBuoy } from "lucide-react";
 
 const FooterWrapper = styled.footer`
 	width: 100%;
@@ -34,7 +35,7 @@ const FooterLeft = styled.div`
 const CompanyName = styled.span`
 	font-weight: bold;
 	font-size: 1.1rem;
-	color: gray;
+	color: #ccc;
 `;
 
 const FooterLinks = styled.nav`
@@ -52,7 +53,15 @@ const FooterLink = styled.a`
 	color: grey;
 	text-decoration: none;
 	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 6px;
 	transition: color 0.2s;
+
+	svg {
+		width: 18px;
+		height: 18px;
+	}
 
 	&:hover {
 		color: white;
@@ -75,9 +84,15 @@ const Footer: React.FC = () => (
 				<CompanyName>Twitter</CompanyName>
 			</FooterLeft>
 			<FooterLinks>
-				<FooterLink href='#'>Privacy Policy</FooterLink>
-				<FooterLink href='#'>Terms of Service</FooterLink>
-				<FooterLink href='#'>Support</FooterLink>
+				<FooterLink href='#'>
+					<ShieldCheck /> Privacy
+				</FooterLink>
+				<FooterLink href='#'>
+					<FileText /> Terms
+				</FooterLink>
+				<FooterLink href='#'>
+					<LifeBuoy /> Support
+				</FooterLink>
 			</FooterLinks>
 		</FooterContent>
 		<Copyright>
