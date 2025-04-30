@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 const FieldWrapper = styled.div`
 	position: relative;
-	margin-bottom: 32px;
+	margin-bottom: 22px;
 	text-align: left;
 `;
 

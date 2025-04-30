@@ -15,8 +15,9 @@ export async function handleSubmit(e: React.FormEvent, fields: Fields) {
 		});
 
 		const data = await response.json();
-		console.log(data.message);
+		return data.message;
 	} catch (error) {
 		console.error("Ошибка при отправке:", error);
+		throw error;
 	}
 }

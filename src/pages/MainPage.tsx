@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-const SectionWrapper = styled.section<{ bgColor?: string }>`
+const SectionWrapper = styled.section<{ bgcolor?: string }>`
 	width: 100%;
-	background-color: ${({ bgColor }) => bgColor || "transparent"};
+	background-color: ${({ bgcolor }) => bgcolor || "transparent"};
 	padding: 60px 0;
 `;
 
@@ -129,7 +129,7 @@ const ContactButton = styled(NavLink)`
 	border-radius: 8px;
 	font-size: 1rem;
 	cursor: pointer;
-	transition: background-color 0.3s ease;
+	transition: all 0.3s ease !important;
 	margin: 0 auto;
 	text-decoration: none;
 
@@ -157,7 +157,7 @@ const BottomTitle = styled.h2`
 const MainPage: React.FC = () => {
 	return (
 		<>
-			<TopSection bgColor='#f7f7f7'>
+			<TopSection bgcolor='#f7f7f7'>
 				<TopContent>
 					<LeftBlock>
 						<Title data-aos='fade-down'>Join the conversation on Twitter</Title>
@@ -251,7 +251,7 @@ const MainPage: React.FC = () => {
 				</MiddleContent>
 			</MiddleSection>
 
-			<BottomSection bgColor='#f4f4f4'>
+			<BottomSection bgcolor='#f4f4f4'>
 				<BottomContent>
 					<BottomTitle data-aos='fade-down'>
 						Ready to see what's happening?

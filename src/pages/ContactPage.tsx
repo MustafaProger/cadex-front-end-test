@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ContactForm from "../components/form/Form";
 import { handleSubmit } from "../services/formService";
+import { useNavigate } from "react-router-dom";
 
 const Section = styled.section`
 	width: 100%;
@@ -39,15 +40,36 @@ const Description = styled.p`
 
 const ContactPage: React.FC = () => {
 	const [fields, setFields] = useState({
-		name: "",
-		email: "",
-		message: "",
+		name: "ыфвафыв",
+		email: "sadfads@sdfdsf",
+		message: "asdfasdfasdfasdfsda",
 	});
+
+	const [loading, setLoading] = useState(false);
+	const [responseMessage, setResponseMessage] = useState("");
+	const [formSent, setFormSent] = useState(false);
+
+	const navigate = useNavigate();
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		setFields({ ...fields, [e.target.name]: e.target.value });
+	};
+
+	const onSubmit = async (e: React.FormEvent) => {
+		setLoading(true);
+		try {
+			const message = await handleSubmit(e, fields);
+			setResponseMessage(message);
+			setFormSent(true);
+			sessionStorage.setItem("formResponse", JSON.stringify({ message }));
+			navigate("/thank-you");
+		} catch (err) {
+			alert("Ошибка при отправке");
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	return (
@@ -60,11 +82,27 @@ const ContactPage: React.FC = () => {
 					Have a question or feedback? Fill out the form below and our team will
 					get back to you soon.
 				</Description>
-				<ContactForm
-					values={fields}
-					onChange={handleChange}
-					onSubmit={(e) => handleSubmit(e, fields)}
-				/>
+				{loading ? (
+					<p>Отправка данных...</p>
+				) : formSent ? (
+					<>
+						<p>{responseMessage}</p>
+						<button
+							onClick={() => {
+								setFormSent(false);
+								setFields({ name: "", email: "", message: "" });
+								setResponseMessage("");
+							}}>
+							Заполнить снова
+						</button>
+					</>
+				) : (
+					<ContactForm
+						values={fields}
+						onChange={handleChange}
+						onSubmit={onSubmit}
+					/>
+				)}
 			</Content>
 		</Section>
 	);
